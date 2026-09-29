@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   ReactGlyph,
   NodeGlyph,
@@ -8,6 +9,7 @@ import {
   DockerGlyph,
   VercelGlyph,
 } from "./techIcons";
+import Reveal from "./Reveal";
 
 const W = 800;
 const H = 560;
@@ -30,11 +32,13 @@ const TECHS = [
 });
 
 export default function TechStack() {
+  const [hovered, setHovered] = useState(null);
+
   return (
     <section id="stack" className="border-t border-line bg-ink px-6 py-24 md:px-10">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-14 max-w-xl">
-          <p className="mb-5 text-xs tracking-wide text-muted">STACK TECNOLÓGICO</p>
+        <Reveal className="mb-14 max-w-xl">
+          <p className="mb-5 text-xs tracking-wide text-gold">STACK TECNOLÓGICO</p>
           <h2 className="text-3xl leading-tight tracking-tight md:text-4xl">
             Herramientas probadas, conectadas entre sí.
           </h2>
@@ -42,39 +46,49 @@ export default function TechStack() {
             Elegimos tecnología madura y la integramos como un solo sistema,
             no como piezas sueltas.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="relative mx-auto w-full max-w-3xl">
+        <Reveal delay={150} className="relative mx-auto w-full max-w-3xl">
           <svg viewBox={`0 0 ${W} ${H}`} className="w-full">
             {/* hub */}
-            <circle cx={CX} cy={CY} r="34" fill="none" stroke="var(--color-line-strong)" strokeWidth="1.4" />
+            <circle
+              cx={CX}
+              cy={CY}
+              r="34"
+              fill="none"
+              stroke={hovered !== null ? "var(--color-gold)" : "var(--color-gold-line)"}
+              strokeWidth="1.4"
+              style={{ transition: "stroke 0.3s" }}
+            />
             <text
               x={CX}
               y={CY + 4}
               textAnchor="middle"
               fontSize="11"
               fill="var(--color-paper)"
-              opacity="0.8"
+              opacity="0.85"
             >
               PalacioTECH
             </text>
 
             {/* spokes: hub -> node */}
-            {TECHS.map((t) => (
+            {TECHS.map((t, i) => (
               <line
                 key={`spoke-${t.name}`}
                 x1={CX}
                 y1={CY}
                 x2={t.x}
                 y2={t.y}
-                stroke="var(--color-line-strong)"
-                strokeWidth="1"
+                stroke={hovered === i ? "var(--color-gold)" : "var(--color-gold-line)"}
+                strokeWidth={hovered === i ? 1.6 : 1}
+                style={{ transition: "stroke 0.3s, stroke-width 0.3s" }}
               />
             ))}
 
             {/* ring: node -> next node */}
             {TECHS.map((t, i) => {
               const next = TECHS[(i + 1) % TECHS.length];
+              const active = hovered === i || hovered === (i + 1) % TECHS.length;
               return (
                 <line
                   key={`ring-${t.name}`}
@@ -82,38 +96,47 @@ export default function TechStack() {
                   y1={t.y}
                   x2={next.x}
                   y2={next.y}
-                  stroke="var(--color-line)"
-                  strokeWidth="1"
+                  stroke={active ? "var(--color-gold)" : "var(--color-line)"}
+                  strokeWidth={active ? 1.4 : 1}
+                  style={{ transition: "stroke 0.3s, stroke-width 0.3s" }}
                 />
               );
             })}
 
             {/* node circles */}
-            {TECHS.map((t) => (
+            {TECHS.map((t, i) => (
               <circle
                 key={`node-${t.name}`}
                 cx={t.x}
                 cy={t.y}
                 r="30"
                 fill="var(--color-ink)"
-                stroke="var(--color-line-strong)"
-                strokeWidth="1.4"
+                stroke={hovered === i ? "var(--color-gold)" : "var(--color-line-strong)"}
+                strokeWidth={hovered === i ? 1.8 : 1.4}
+                style={{ transition: "stroke 0.3s, stroke-width 0.3s" }}
               />
             ))}
           </svg>
 
           {/* icon + label overlay, positioned to match the SVG nodes */}
-          {TECHS.map((t) => (
+          {TECHS.map((t, i) => (
             <div
               key={`label-${t.name}`}
-              className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-2 text-paper"
-              style={{ left: `${(t.x / W) * 100}%`, top: `${(t.y / H) * 100}%` }}
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}
+              className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-2 text-paper transition-transform duration-300"
+              style={{
+                left: `${(t.x / W) * 100}%`,
+                top: `${(t.y / H) * 100}%`,
+                transform: `translate(-50%, -50%) scale(${hovered === i ? 1.12 : 1})`,
+                color: hovered === i ? "var(--color-gold)" : undefined,
+              }}
             >
               <t.Glyph />
               <span className="whitespace-nowrap text-[11px] text-paper/70">{t.name}</span>
             </div>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

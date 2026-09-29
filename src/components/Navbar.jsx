@@ -44,7 +44,7 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm text-paper/75 transition-colors hover:text-paper"
+                className="link-underline text-sm text-paper/75 transition-colors hover:text-paper"
               >
                 {link.label}
               </a>
@@ -54,7 +54,7 @@ export default function Navbar() {
 
         <a
           href="#contacto"
-          className="hidden md:inline-flex items-center bg-paper px-5 py-2 text-sm font-medium text-ink transition-opacity hover:opacity-85"
+          className="hidden md:inline-flex items-center bg-gold px-5 py-2 text-sm font-medium text-ink transition-transform duration-300 hover:scale-[1.04] hover:shadow-[0_0_24px_var(--color-gold-soft)]"
         >
           Hablemos
         </a>
@@ -102,7 +102,7 @@ export default function Navbar() {
             <a
               href="#contacto"
               onClick={() => setOpen(false)}
-              className="inline-flex items-center bg-paper px-5 py-2 text-sm font-medium text-ink"
+              className="inline-flex items-center bg-gold px-5 py-2 text-sm font-medium text-ink"
             >
               Hablemos
             </a>

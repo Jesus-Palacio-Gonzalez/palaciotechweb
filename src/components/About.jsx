@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 const FACTS = [
   { label: "Sede", value: "Santa Marta, Colombia" },
   { label: "Enfoque", value: "Negocios en crecimiento de LatAm" },
@@ -8,8 +10,8 @@ export default function About() {
   return (
     <section id="nosotros" className="border-t border-ink bg-paper px-6 py-24 text-ink md:px-10">
       <div className="mx-auto grid max-w-6xl gap-16 lg:grid-cols-[1.2fr_0.8fr]">
-        <div>
-          <p className="mb-5 text-xs tracking-wide text-ink/50">CONÓCENOS</p>
+        <Reveal>
+          <p className="mb-5 text-xs tracking-wide text-[#b9812a]">CONÓCENOS</p>
           <h2 className="max-w-lg text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
             Una agencia pequeña, hecha para moverse rápido.
           </h2>
@@ -23,16 +25,19 @@ export default function About() {
             Trabajamos con comercios, marcas y operaciones que están listas
             para dejar las hojas de cálculo y los procesos manuales atrás.
           </p>
-        </div>
+        </Reveal>
 
-        <dl className="flex flex-col gap-6">
-          {FACTS.map((f) => (
-            <div key={f.label} className="border-t border-ink/10 pt-6 first:border-t-0 first:pt-0">
+        <Reveal delay={150} as="dl" className="flex flex-col gap-6">
+          {FACTS.map((f, i) => (
+            <div
+              key={f.label}
+              className="border-t border-ink/10 pt-6 first:border-t-0 first:pt-0"
+            >
               <dt className="text-xs tracking-wide text-ink/45">{f.label.toUpperCase()}</dt>
               <dd className="mt-2 text-lg font-medium">{f.value}</dd>
             </div>
           ))}
-        </dl>
+        </Reveal>
       </div>
     </section>
   );
