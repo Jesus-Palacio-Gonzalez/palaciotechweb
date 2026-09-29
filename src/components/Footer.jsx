@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-xs text-muted md:flex-row">
         <span>PalacioTECH © {new Date().getFullYear()}</span>
         <span>Santa Marta, Colombia</span>
-        <span>Hecho con mucho 💙 by Jesús Palacio </span>
+        <span>Hecho con mucho 💙 by <a href="https://infojesuspalacio.vercel.app/" className="text-gold hover:underline" target="_blank" rel="noopener noreferrer">Jesús Palacio</a></span>
       </div>
     </footer>
   );
