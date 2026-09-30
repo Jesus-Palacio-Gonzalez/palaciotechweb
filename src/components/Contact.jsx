@@ -7,10 +7,10 @@ export default function Contact() {
         <Reveal>
           <p className="mb-5 text-xs tracking-wide text-gold">HABLEMOS</p>
           <h2 className="max-w-2xl text-4xl leading-tight tracking-tight md:text-5xl">
-            Cuentanos qué proceso quieres hacer funcionar.
+            Contanos qué proceso quieres hacer funcionar.
           </h2>
           <p className="mt-6 max-w-md text-[15px] leading-relaxed text-paper/60">
-            Escribenos y coordinamos una primera llamada de 20 minutos, sin
+            Escribinos y coordinamos una primera llamada de 20 minutos, sin
             costo, para entender tu operación.
           </p>
         </Reveal>
