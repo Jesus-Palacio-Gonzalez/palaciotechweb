@@ -1,20 +1,29 @@
 import Reveal from "./Reveal";
+import entenderImg from "../assets/proceso-entender.jpg";
+import ordenarImg from "../assets/proceso-ordenar.png";
+import construirImg from "../assets/proceso-construir.png";
 
 const ITEMS = [
   {
-    n: "01",
+    n: "Paso 1",
     title: "Entender",
     text: "Ponemos nombre a los cuellos de botella y a las oportunidades que ya existen.",
+    image: entenderImg,
+    alt: "Diagrama del flujo entre cliente, API gateway, base de datos y servidor de aplicación",
   },
   {
-    n: "02",
+    n: "Paso 2",
     title: "Ordenar",
     text: "Definimos una primera versión útil, con alcance claro y decisiones que sí se pueden sostener.",
+    image: ordenarImg,
+    alt: "Cuadrícula editorial con bloques de imagen y texto ordenados",
   },
   {
-    n: "03",
+    n: "Paso 3",
     title: "Construir",
     text: "Diseñamos y desarrollamos la solución con tus procesos, datos y personas en el centro.",
+    image: construirImg,
+    alt: "Pantalla con código y un modelo 3D en construcción",
   },
 ];
 
@@ -35,14 +44,23 @@ export default function HowWeWork() {
         </Reveal>
 
         <ul>
-          {ITEMS.map(({ n, title, text }, i) => (
+          {ITEMS.map(({ n, title, text, image, alt }, i) => (
             <Reveal as="li" key={n} delay={i * 100}>
-              <div className="grid grid-cols-[auto_auto_1fr] items-baseline gap-6 border-t border-ink/10 py-7 last:border-b md:grid-cols-[auto_140px_1fr]">
-                <span className="text-sm font-medium text-[#b9812a]">{n}</span>
-                <h3 className="text-xl font-semibold">{title}</h3>
-                <p className="max-w-md text-sm leading-relaxed text-ink/60">
+              <div className="flex flex-col gap-5 border-t border-ink/10 py-7 last:border-b md:flex-row md:items-center md:gap-8">
+                <div className="flex items-baseline gap-6 md:w-[210px] md:flex-shrink-0">
+                  <span className="text-sm font-medium text-[#b9812a]">{n}</span>
+                  <h3 className="text-xl font-semibold">{title}</h3>
+                </div>
+
+                <p className="flex-1 text-sm leading-relaxed text-ink/60">
                   {text}
                 </p>
+
+                <img
+                  src={image}
+                  alt={alt}
+                  className="h-32 w-full border border-ink/10 object-cover md:h-20 md:w-44 md:flex-shrink-0"
+                />
               </div>
             </Reveal>
           ))}

@@ -3,19 +3,16 @@ import Reveal from "./Reveal";
 
 const ITEMS = [
   {
-    n: "01",
     icon: Globe,
     title: "Presencia que trabaja",
     text: "Sitios web claros, rápidos y pensados para convertir visitas en conversaciones reales.",
   },
   {
-    n: "02",
     icon: Layers,
     title: "Ventas sin fricción",
     text: "Tiendas en línea con pagos, catálogo y operaciones conectadas para que vender sea más sencillo.",
   },
   {
-    n: "03",
     icon: Link2,
     title: "Operaciones a medida",
     text: "Aplicaciones, APIs y sistemas internos que eliminan tareas repetitivas y ordenan el trabajo.",

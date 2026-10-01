@@ -4,8 +4,25 @@ import Reveal from "./Reveal";
 export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden px-6 pt-32 pb-16 md:px-10 md:pt-40">
+      {/* Background video, fit to the hero's full size */}
+      <div className="absolute inset-0 z-0">
+        <video
+          className="h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/video/hero-bg-poster.jpg"
+        >
+          <source src="/video/hero-bg.webm" type="video/webm" />
+          <source src="/video/hero-bg.mp4" type="video/mp4" />
+        </video>
+        {/* overlay for text legibility over the footage */}
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/70 to-ink" />
+      </div>
 
-      <div className="mx-auto grid max-w-6xl gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+      <div className="relative z-10 mx-auto grid max-w-6xl gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         {/* Copy */}
         <div>
           <h1 className="text-5xl leading-[1.05] tracking-tight md:text-7xl">
