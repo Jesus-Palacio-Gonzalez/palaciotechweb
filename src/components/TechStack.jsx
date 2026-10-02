@@ -48,8 +48,9 @@ export default function TechStack() {
           </p>
         </Reveal>
 
-        <Reveal delay={150} className="relative mx-auto w-full max-w-3xl">
-          <svg viewBox={`0 0 ${W} ${H}`} className="w-full">
+        <Reveal delay={150} className="mx-auto w-full max-w-3xl">
+        <div className="relative w-full" style={{ aspectRatio: `${W} / ${H}` }}>
+          <svg viewBox={`0 0 ${W} ${H}`} className="absolute inset-0 h-full w-full">
             {/* hub */}
             <circle
               cx={CX}
@@ -124,7 +125,7 @@ export default function TechStack() {
               key={`label-${t.name}`}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
-              className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-2 text-paper transition-transform duration-300"
+              className="absolute flex flex-col items-center gap-2 text-paper transition-transform duration-300"
               style={{
                 left: `${(t.x / W) * 100}%`,
                 top: `${(t.y / H) * 100}%`,
@@ -136,6 +137,7 @@ export default function TechStack() {
               <span className="whitespace-nowrap text-[11px] text-paper/70">{t.name}</span>
             </div>
           ))}
+        </div>
         </Reveal>
       </div>
     </section>

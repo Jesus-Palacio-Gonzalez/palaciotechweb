@@ -6,8 +6,8 @@ import {
 } from "./socialIcons";
 
 const SOCIALS = [
-  { label: "Instagram", href: "#", Icon: InstagramIcon },
-  { label: "Facebook", href: "#", Icon: FacebookIcon },
+  { label: "Instagram", href: "https://www.instagram.com/jesuspalaciog/", Icon: InstagramIcon },
+  { label: "Facebook", href: "https://www.facebook.com/Palaciotechsas", Icon: FacebookIcon },
   { label: "WhatsApp", href: "https://wa.me/", Icon: WhatsappIcon },
   { label: "GitHub", href: "https://github.com/Jesus-Palacio-Gonzalez", Icon: GithubIcon },
 ];

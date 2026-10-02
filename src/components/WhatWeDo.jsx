@@ -8,6 +8,7 @@ const ITEMS = [
     text: "Sitios web claros, rápidos y pensados para convertir visitas en conversaciones reales.",
   },
   {
+    
     icon: Layers,
     title: "Ventas sin fricción",
     text: "Tiendas en línea con pagos, catálogo y operaciones conectadas para que vender sea más sencillo.",
